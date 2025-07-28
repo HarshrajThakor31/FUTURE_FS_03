@@ -76,7 +76,7 @@ export default function HomePage() {
       setCurrentSlide((prev) => (prev + 1) % featuredContent.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [featuredContent.length]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
@@ -119,7 +119,7 @@ export default function HomePage() {
                     alt={news.title} 
                     className="absolute inset-0 w-full h-full object-contain bg-slate-800 group-hover:opacity-80 transition-opacity"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/600x300/1e293b/cyan?text=' + encodeURIComponent(news.title);
+                      e.target.src = 'https://via.placeholder.com/600x300/1e293b/00bcd4?text=' + encodeURIComponent(news.title);
                     }}
                   />
                 </div>
@@ -165,7 +165,7 @@ export default function HomePage() {
                 alt="Millennium Falcon" 
                 className="w-full rounded-xl shadow-2xl"
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/600x400/1e293b/amber?text=Millennium+Falcon';
+                  e.target.src = 'https://via.placeholder.com/600x400/1e293b/f59e0b?text=Millennium+Falcon';
                 }}
               />
             </div>
@@ -187,7 +187,7 @@ export default function HomePage() {
                 alt="This Day in Star Wars History - December 20, 2024" 
                 className="rounded-xl shadow-2xl mx-auto max-w-2xl w-full h-auto object-contain"
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/800x600/1e293b/amber?text=Holiday+Special';
+                  e.target.src = 'https://via.placeholder.com/800x600/1e293b/f59e0b?text=Holiday+Special';
                 }}
               />
             </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
                     alt={era.title} 
                     className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/600x400/1e293b/emerald?text=' + encodeURIComponent(era.title);
+                      e.target.src = 'https://via.placeholder.com/600x400/1e293b/10b981?text=' + encodeURIComponent(era.title);
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>

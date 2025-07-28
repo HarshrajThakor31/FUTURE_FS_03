@@ -31,6 +31,12 @@ const nextConfig = {
         hostname: 'lumiere-a.akamaihd.net',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        port: '',
+        pathname: '/**',
       }
     ],
     formats: ['image/webp', 'image/avif'],
@@ -45,7 +51,24 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  reactStrictMode: true
+  reactStrictMode: true,
+  // Vercel-specific optimizations
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+  },
+  // Handle font loading issues
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    return config;
+  }
 };
 
 export default nextConfig;
