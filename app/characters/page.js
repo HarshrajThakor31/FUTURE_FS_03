@@ -58,7 +58,7 @@ export default function CharactersPage() {
                   alt={character.name}
                   className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/400x600/1e293b/cyan?text=' + encodeURIComponent(character.name);
+                    e.target.src = 'https://via.placeholder.com/400x600/1e293b/00bcd4?text=' + encodeURIComponent(character.name);
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
