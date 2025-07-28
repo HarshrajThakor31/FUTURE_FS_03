@@ -1,26 +1,56 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --space-navy: #0B1426;
+  --kyber-blue: #4A9EFF;
+  --polished-metal: #C0C0C0;
+  --sith-red: #FF0000;
+  --jedi-green: #00FF00;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--space-navy);
+  color: var(--polished-metal);
+  font-family: 'Orbitron', monospace;
+  min-height: 100vh;
+}
+
+.hero-background {
+  background: linear-gradient(rgba(11, 20, 38, 0.7), rgba(11, 20, 38, 0.7)),
+              url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.stars-animation {
+  background: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+              radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+              radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+              radial-gradient(1px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
+              radial-gradient(2px 1px at 160px 30px, rgba(255,255,255,0.9), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+  from { transform: translateX(0); }
+  to { transform: translateX(200px); }
+}
+
+.glow-text {
+  text-shadow: 0 0 10px var(--kyber-blue), 0 0 20px var(--kyber-blue), 0 0 30px var(--kyber-blue);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(192, 192, 192, 0.2);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--kyber-blue);
+  box-shadow: 0 10px 25px rgba(74, 158, 255, 0.3);
 }
