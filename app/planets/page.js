@@ -124,7 +124,7 @@ export default function PlanetsPage() {
                 alt={planet.name}
                 className="w-full h-64 object-cover"
                 onError={(e) => {
-                  e.target.src = 'https://picsum.photos/600/400?random=' + Math.floor(Math.random() * 1000);
+                  e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center';
                 }}
               />
               <div className="p-6">

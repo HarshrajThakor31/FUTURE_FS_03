@@ -58,7 +58,7 @@ export default function CharactersPage() {
                   alt={character.name}
                   className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
-                    e.target.src = 'https://picsum.photos/400/600?random=' + Math.floor(Math.random() * 1000);
+                    e.target.src = 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop&crop=center';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

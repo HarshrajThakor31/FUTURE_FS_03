@@ -346,7 +346,7 @@ export default function AdminPage() {
           length: ship.length || 'Unknown',
           crew: ship.crew || 'Unknown',
           description: ship.description || `${ship.model || 'Starship'} manufactured by ${ship.manufacturer || 'unknown company'}`,
-          imageUrl: ship.image || ship.imageUrl || 'https://picsum.photos/600/400?random=' + Math.floor(Math.random() * 1000)
+          imageUrl: ship.image || ship.imageUrl || 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center'
         };
         
         try {
@@ -390,7 +390,7 @@ export default function AdminPage() {
           name: char.name || 'Unknown',
           affiliation: char.affiliations && char.affiliations.length > 0 ? char.affiliations.join(', ') : 'Unknown',
           description: `${char.species || 'Unknown species'} from ${char.homeworld || 'Unknown world'}${char.height ? `. Height: ${char.height}cm` : ''}${char.mass ? `, Mass: ${char.mass}kg` : ''}`,
-          imageUrl: char.image || 'https://picsum.photos/400/600?random=' + Math.floor(Math.random() * 1000),
+          imageUrl: char.image || 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400&h=600&fit=crop&crop=center',
           species: char.species || 'Unknown',
           gender: char.gender || 'Unknown',
           homeworld: char.homeworld || 'Unknown',

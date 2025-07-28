@@ -21,13 +21,13 @@ export default function DatabankPage() {
           id: "luke-skywalker",
           name: "Luke Skywalker",
           affiliation: "Jedi Order",
-          imageUrl: "https://picsum.photos/400/600?random=1"
+          imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop&crop=center"
         },
         {
           id: "darth-vader",
           name: "Darth Vader",
           affiliation: "Sith Empire",
-          imageUrl: "https://picsum.photos/400/600?random=2"
+          imageUrl: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400&h=600&fit=crop&crop=center"
         },
         {
           id: "princess-leia",
@@ -115,7 +115,7 @@ export default function DatabankPage() {
                       setImageLoadedStatus(prev => ({ ...prev, [char.id]: true }));
                     }}
                     onError={(e) => {
-                      e.target.src = 'https://picsum.photos/400/600?random=' + Math.floor(Math.random() * 1000);
+                      e.target.src = 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop&crop=center';
                       setImageLoadedStatus(prev => ({ ...prev, [char.id]: false }));
                     }}
                   />

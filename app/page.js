@@ -119,7 +119,7 @@ export default function HomePage() {
                     alt={news.title} 
                     className="absolute inset-0 w-full h-full object-contain bg-slate-800 group-hover:opacity-80 transition-opacity"
                     onError={(e) => {
-                      e.target.src = 'https://picsum.photos/600/300?random=' + Math.floor(Math.random() * 1000);
+                      e.target.src = 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=300&fit=crop&crop=center';
                     }}
                   />
                 </div>
@@ -165,7 +165,7 @@ export default function HomePage() {
                 alt="Millennium Falcon" 
                 className="w-full rounded-xl shadow-2xl"
                 onError={(e) => {
-                  e.target.src = 'https://picsum.photos/600/400?random=' + Math.floor(Math.random() * 1000);
+                  e.target.src = 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center';
                 }}
               />
             </div>
@@ -187,7 +187,7 @@ export default function HomePage() {
                 alt="This Day in Star Wars History - December 20, 2024" 
                 className="rounded-xl shadow-2xl mx-auto max-w-2xl w-full h-auto object-contain"
                 onError={(e) => {
-                  e.target.src = 'https://picsum.photos/800/600?random=' + Math.floor(Math.random() * 1000);
+                  e.target.src = 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=800&h=600&fit=crop&crop=center';
                 }}
               />
             </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
                     alt={era.title} 
                     className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
                     onError={(e) => {
-                      e.target.src = 'https://picsum.photos/600/400?random=' + Math.floor(Math.random() * 1000);
+                      e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
