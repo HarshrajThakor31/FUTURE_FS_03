@@ -15,27 +15,7 @@ export default function DatabankPage() {
 
   useEffect(() => {
     const getCharacters = async () => {
-      // Define fallback data at the top level
-      const fallbackChars = [
-        {
-          id: "luke-skywalker",
-          name: "Luke Skywalker",
-          affiliation: "Jedi Order",
-          imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop&crop=center"
-        },
-        {
-          id: "darth-vader",
-          name: "Darth Vader",
-          affiliation: "Sith Empire",
-          imageUrl: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400&h=600&fit=crop&crop=center"
-        },
-        {
-          id: "princess-leia",
-          name: "Princess Leia",
-          affiliation: "Rebel Alliance",
-          imageUrl: "https://picsum.photos/400/600?random=3"
-        }
-      ];
+
       
       try {
         const querySnapshot = await getDocs(collection(db, "characters"));
@@ -44,7 +24,21 @@ export default function DatabankPage() {
           chars.push({ id: doc.id, ...doc.data() });
         });
         
-        const finalChars = chars.length > 0 ? chars : fallbackChars;
+        // Filter characters with real images and remove duplicates
+        const filteredChars = chars.filter(char => 
+          char.imageUrl && 
+          !char.imageUrl.includes('unsplash.com') && 
+          !char.imageUrl.includes('placeholder') &&
+          !char.imageUrl.includes('picsum.photos') &&
+          !char.imageUrl.includes('via.placeholder')
+        );
+        
+        // Remove duplicates by name
+        const uniqueChars = filteredChars.filter((char, index, self) => 
+          index === self.findIndex(c => c.name === char.name)
+        );
+        
+        const finalChars = uniqueChars.length > 0 ? uniqueChars : [];
         setCharacters(finalChars);
         setFilteredCharacters(finalChars);
         
@@ -56,14 +50,9 @@ export default function DatabankPage() {
         setImageLoadedStatus(initialStatus);
       } catch (error) {
         console.error("Firebase error:", error);
-        setCharacters(fallbackChars);
-        setFilteredCharacters(fallbackChars);
-        
-        const initialStatus = {};
-        fallbackChars.forEach(char => {
-          initialStatus[char.id] = false;
-        });
-        setImageLoadedStatus(initialStatus);
+        setCharacters([]);
+        setFilteredCharacters([]);
+        setImageLoadedStatus({});
       }
       setLoading(false);
     };
