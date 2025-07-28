@@ -12,6 +12,7 @@ export default function DatabankPage() {
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageLoadedStatus, setImageLoadedStatus] = useState({});
+  const [failedImages, setFailedImages] = useState(new Set());
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -85,6 +86,7 @@ export default function DatabankPage() {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
           {filteredCharacters
+            .filter(char => !failedImages.has(char.id))
             .sort((a, b) => {
               const aLoaded = imageLoadedStatus[a.id] || false;
               const bLoaded = imageLoadedStatus[b.id] || false;
@@ -104,7 +106,7 @@ export default function DatabankPage() {
                       setImageLoadedStatus(prev => ({ ...prev, [char.id]: true }));
                     }}
                     onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop&crop=center';
+                      setFailedImages(prev => new Set([...prev, char.id]));
                       setImageLoadedStatus(prev => ({ ...prev, [char.id]: false }));
                     }}
                   />
