@@ -21,7 +21,7 @@ export default function Footer() {
             <h4 className="text-blue-400 font-bold mb-4">EXPLORE</h4>
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/databank" className="hover:text-blue-400 transition-colors">Characters</Link></li>
-              <li><Link href="/vehicles" className="hover:text-blue-400 transition-colors">Vehicles</Link></li>
+              <li><Link href="/starships" className="hover:text-blue-400 transition-colors">Starships</Link></li>
               <li><Link href="/timeline" className="hover:text-blue-400 transition-colors">Timeline</Link></li>
             </ul>
           </div>

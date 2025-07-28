@@ -15,21 +15,82 @@ export default function DatabankPage() {
 
   useEffect(() => {
     const getCharacters = async () => {
-      const querySnapshot = await getDocs(collection(db, "characters"));
-      const chars = [];
-      querySnapshot.forEach((doc) => {
-        chars.push({ id: doc.id, ...doc.data() });
-      });
-      setCharacters(chars);
-      setFilteredCharacters(chars);
+      try {
+        const querySnapshot = await getDocs(collection(db, "characters"));
+        const chars = [];
+        querySnapshot.forEach((doc) => {
+          chars.push({ id: doc.id, ...doc.data() });
+        });
+        
+        if (chars.length === 0) {
+          // Fallback data when Firebase is empty
+          const fallbackChars = [
+            {
+              id: "luke-skywalker",
+              name: "Luke Skywalker",
+              affiliation: "Jedi Order",
+              imageUrl: "https://via.placeholder.com/400x600/1e293b/cyan?text=Luke+Skywalker"
+            },
+            {
+              id: "darth-vader",
+              name: "Darth Vader",
+              affiliation: "Sith Empire",
+              imageUrl: "https://via.placeholder.com/400x600/1e293b/red?text=Darth+Vader"
+            },
+            {
+              id: "princess-leia",
+              name: "Princess Leia",
+              affiliation: "Rebel Alliance",
+              imageUrl: "https://via.placeholder.com/400x600/1e293b/amber?text=Princess+Leia"
+            }
+          ];
+          setCharacters(fallbackChars);
+          setFilteredCharacters(fallbackChars);
+        } else {
+          setCharacters(chars);
+          setFilteredCharacters(chars);
+        }
+        
+        // Initialize image loading status
+        const initialStatus = {};
+        const finalChars = chars.length > 0 ? chars : fallbackChars;
+        finalChars.forEach(char => {
+          initialStatus[char.id] = false;
+        });
+        setImageLoadedStatus(initialStatus);
+      } catch (error) {
+        console.error("Firebase error:", error);
+        // Fallback data when Firebase fails
+        const fallbackChars = [
+          {
+            id: "luke-skywalker",
+            name: "Luke Skywalker",
+            affiliation: "Jedi Order",
+            imageUrl: "https://via.placeholder.com/400x600/1e293b/cyan?text=Luke+Skywalker"
+          },
+          {
+            id: "darth-vader",
+            name: "Darth Vader",
+            affiliation: "Sith Empire",
+            imageUrl: "https://via.placeholder.com/400x600/1e293b/red?text=Darth+Vader"
+          },
+          {
+            id: "princess-leia",
+            name: "Princess Leia",
+            affiliation: "Rebel Alliance",
+            imageUrl: "https://via.placeholder.com/400x600/1e293b/amber?text=Princess+Leia"
+          }
+        ];
+        setCharacters(fallbackChars);
+        setFilteredCharacters(fallbackChars);
+        
+        const initialStatus = {};
+        fallbackChars.forEach(char => {
+          initialStatus[char.id] = false;
+        });
+        setImageLoadedStatus(initialStatus);
+      }
       setLoading(false);
-      
-      // Initialize image loading status
-      const initialStatus = {};
-      chars.forEach(char => {
-        initialStatus[char.id] = false;
-      });
-      setImageLoadedStatus(initialStatus);
     };
     getCharacters();
   }, []);
